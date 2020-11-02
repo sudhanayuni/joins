@@ -1,0 +1,225 @@
+mysql> create database employee1;
+Query OK, 1 row affected (0.11 sec)
+
+mysql> use employee1;
+Database changed
+mysql> create table employee(employeId int,emplFname varchar(200),empsname varchar(300),empAge int);
+Query OK, 0 rows affected (1.59 sec)
+
+mysql> describe employeedetails;
+ERROR 1146 (42S02): Table 'employee1.employeedetails' doesn't exist
+mysql> describe employee;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| employeId | int          | YES  |     | NULL    |       |
+| emplFname | varchar(200) | YES  |     | NULL    |       |
+| empsname  | varchar(300) | YES  |     | NULL    |       |
+| empAge    | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.04 sec)
+
+mysql> insert into employee(employeId,empFname,empSnmae,empAge)values(1,'sudha','reddy',22);
+ERROR 1054 (42S22): Unknown column 'empFname' in 'field list'
+mysql> insert into employee(employeId,emplFname,empSnmae,empAge)values(1,'sudha','reddy',22);
+ERROR 1054 (42S22): Unknown column 'empSnmae' in 'field list'
+mysql> insert into employee(employeId,emplFname,empSname,empAge)values(1,'sudha','reddy',22);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into employee(employeId,emplFname,empSname,empAge)values(2,'sai','rachana',23);
+Query OK, 1 row affected (0.24 sec)
+
+mysql> insert into employee(employeId,emplFname,empSname,empAge)values(2,'sai','pranathi',25)
+    -> ;
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into employee(employeId,emplFname,empSname,empAge)values(2,'sneha','reddy',22);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from employee1;
+ERROR 1146 (42S02): Table 'employee1.employee1' doesn't exist
+mysql> select * from employee;
++-----------+-----------+----------+--------+
+| employeId | emplFname | empsname | empAge |
++-----------+-----------+----------+--------+
+|         1 | sudha     | reddy    |     22 |
+|         2 | sai       | rachana  |     23 |
+|         2 | sai       | pranathi |     25 |
+|         2 | sneha     | reddy    |     22 |
++-----------+-----------+----------+--------+
+4 rows in set (0.13 sec)
+
+mysql> create table project(prjId int,empId int,clientId int,projectname varchar(200));
+Query OK, 0 rows affected (1.83 sec)
+
+mysql> insert into project(prjId,empId,clientId,projectname)values(561,1,3,'project1';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> insert into project(prjId,empId,clientId,projectname)values(561,1,3,'project1');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into project(prjId,empId,clientId,projectname)values(562,2,1,'project2');
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into project(prjId,empId,clientId,projectname)values(563,3,2,'project3');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> insert into project(prjId,empId,clientId,projectname)values(564,4,4,'project4');
+Query OK, 1 row affected (0.23 sec)
+
+mysql> insert into project(prjId,empId,clientId,projectname)values(565,7,6,'project5');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from project;
++-------+-------+----------+-------------+
+| prjId | empId | clientId | projectname |
++-------+-------+----------+-------------+
+|   561 |     1 |        3 | project1    |
+|   562 |     2 |        1 | project2    |
+|   563 |     3 |        2 | project3    |
+|   564 |     4 |        4 | project4    |
+|   565 |     7 |        6 | project5    |
++-------+-------+----------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> create table client(clientId int,clientFname varchar(200),clientSname varchar(300));
+Query OK, 0 rows affected (1.63 sec)
+
+mysql> describe client;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| clientId    | int          | YES  |     | NULL    |       |
+| clientFname | varchar(200) | YES  |     | NULL    |       |
+| clientSname | varchar(300) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+mysql> alter table client add column clientAge int;
+Query OK, 0 rows affected (0.86 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe client;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| clientId    | int          | YES  |     | NULL    |       |
+| clientFname | varchar(200) | YES  |     | NULL    |       |
+| clientSname | varchar(300) | YES  |     | NULL    |       |
+| clientAge   | int          | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into client (clientId,clientFname,clientSname,clientAge)values(1,'sai','namrith',22);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into client (clientId,clientFname,clientSname,clientAge)values(2,'sai','naresh',23);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into client (clientId,clientFname,clientSname,clientAge)values(3,'nani','sasi',25);
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into client (clientId,clientFname,clientSname,clientAge)values(4,'syed','arfath',22);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into client (clientId,clientFname,clientSname,clientAge)values(5,'sri','latha',23);
+Query OK, 1 row affected (0.23 sec)ysql> select * from employee;
++-----------+-----------+----------+--------+
+| employeId | emplFname | empsname | empAge |
++-----------+-----------+----------+--------+
+|         1 | sudha     | reddy    |     22 |
+|         2 | sai       | rachana  |     23 |
+|         2 | sai       | pranathi |     25 |
+|         2 | sneha     | reddy    |     22 |
++-----------+-----------+----------+--------+
+4 rows in set (0.10 sec)
+
+mysql> select * from client;
++----------+-------------+-------------+-----------+
+| clientId | clientFname | clientSname | clientAge |
++----------+-------------+-------------+-----------+
+|        1 | sai         | namrith     |        22 |
+|        2 | sai         | naresh      |        23 |
+|        3 | nani        | sasi        |        25 |
+|        4 | syed        | arfath      |        22 |
+|        5 | sri         | latha       |        23 |
++----------+-------------+-------------+-----------+
+5 rows in set (0.12 sec)
+
+mysql> select * from project;
++-------+-------+----------+-------------+
+| prjId | empId | clientId | projectname |
++-------+-------+----------+-------------+
+|   561 |     1 |        3 | project1    |
+|   562 |     2 |        1 | project2    |
+|   563 |     3 |        2 | project3    |
+|   564 |     4 |        4 | project4    |
+|   565 |     7 |        6 | project5    |
++-------+-------+----------+-------------+
+5 rows in set (0.11 sec)mysql> select employee.employeId,employee.emplFname,employee.empSname,project.prjId,project.projectname from employee INNER JOIN project on employee.employeId=project.empId;
++-----------+-----------+----------+-------+-------------+
+| employeId | emplFname | empSname | prjId | projectname |
++-----------+-----------+----------+-------+-------------+
+|         1 | sudha     | reddy    |   561 | project1    |
+|         2 | sai       | rachana  |   562 | project2    |
+|         2 | sai       | pranathi |   562 | project2    |
+|         2 | sneha     | reddy    |   562 | project2    |
++-----------+-----------+----------+-------+-------------+
+4 rows in set (0.00 sec)
+mysql> select * from employee;
++-----------+-----------+----------+--------+
+| employeId | emplFname | empsname | empAge |
++-----------+-----------+----------+--------+
+|         1 | sudha     | reddy    |     22 |
+|         2 | sai       | rachana  |     23 |
+|         2 | sai       | pranathi |     25 |
+|         2 | sneha     | reddy    |     22 |
++-----------+-----------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from project;
++-------+-------+----------+-------------+
+| prjId | empId | clientId | projectname |
++-------+-------+----------+-------------+
+|   561 |     1 |        3 | project1    |
+|   562 |     2 |        1 | project2    |
+|   563 |     3 |        2 | project3    |
+|   564 |     4 |        4 | project4    |
+|   565 |     7 |        6 | project5    |
++-------+-------+----------+-------------+
+5 rows in set (0.00 sec)mysql> select employee.emplFname,employee.empSname,project.prjId,project.projectname from employee LEFT JOIN project on employee.employeId=project.empId;
++-----------+----------+-------+-------------+
+| emplFname | empSname | prjId | projectname |
++-----------+----------+-------+-------------+
+| sudha     | reddy    |   561 | project1    |
+| sai       | rachana  |   562 | project2    |
+| sai       | pranathi |   562 | project2    |
+| sneha     | reddy    |   562 | project2    |
++-----------+----------+-------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select employee.emplFname,employee.empSname,project.prjId,project.projectname from employee RIGHT JOIN project on employee.employeId=project.empId;
++-----------+----------+-------+-------------+
+| emplFname | empSname | prjId | projectname |
++-----------+----------+-------+-------------+
+| sudha     | reddy    |   561 | project1    |
+| sai       | rachana  |   562 | project2    |
+| sai       | pranathi |   562 | project2    |
+| sneha     | reddy    |   562 | project2    |
+| NULL      | NULL     |   563 | project3    |
+| NULL      | NULL     |   564 | project4    |
+| NULL      | NULL     |   565 | project5    |
++-----------+----------+-------+-------------+
+7 rows in set (0.00 sec)
+mysql> alter table employee change employeId empId varchar(200);
+Query OK, 4 rows affected (3.82 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-------+-----------+----------+--------+
+| empId | emplFname | empsname | empAge |
++-------+-----------+----------+--------+
+| 1     | sudha     | reddy    |     22 |
+| 2     | sai       | rachana  |     23 |
+| 2     | sai       | pranathi |     25 |
+| 2     | sneha     | reddy    |     22 |
++-------+-----------+----------+--------+
+4 rows in set (0.00 sec)
